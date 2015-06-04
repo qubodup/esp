@@ -44,22 +44,22 @@ h1 { font-size: 180%; font-weight: 900; }
 .date div {
 	color: black;
 	background-color: white;
-	margin: 8px
-  height: 100%;
-	min-height: 100%;
+  padding-bottom: .5em;
 }
 
-h3 {
-	font-size: 120%;
-	padding: 6px;
+.date div p {
+  padding-left: .5em;
+  padding-right: .5em;
 }
 
 .date h3 {
   color: white;
 	background-color: #DD365B;
+	font-size: 120%;
+	padding: 6px;
 }
 
-.past h3 {
+.date.past h3 {
   color: white;
 	background-color: #999;
 }
