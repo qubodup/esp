@@ -1,0 +1,69 @@
+body {
+	padding-top: 62px;
+	font-size: 170%;
+}
+.navbar-nav > li > a, .navbar-brand {
+	padding-top: 4px !important;
+	padding-bottom: 0 !important;
+	height: 58px;
+}
+.navbar {
+	min-height:58px !important;
+  background-color: white;
+}
+.navbar .list-inline {
+	margin-bottom: 0 !important;
+}
+
+.red { color: white; background-color: #FF6B8C; }
+.white { color: black; background-color: white; }
+.blue { color: white; background-color: #36C1E5; }
+.gray { color: black; background-color: #ccc; }
+
+h1 { font-size: 180%; font-weight: 900; }
+
+.big {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.med {
+	padding-top: 48px;
+	padding-bottom: 48px;
+}
+
+.note {
+	font-size: 80%;
+}
+
+.date {
+  height: 100%;
+	min-height: 100%;
+}
+
+.date div {
+	color: black;
+	background-color: white;
+	margin: 8px
+  height: 100%;
+	min-height: 100%;
+}
+
+h3 {
+	font-size: 120%;
+	padding: 6px;
+}
+
+.date h3 {
+  color: white;
+	background-color: #DD365B;
+}
+
+.past h3 {
+  color: white;
+	background-color: #999;
+}
+
+#footer {
+	text-align: center;
+}
