@@ -67,3 +67,14 @@ h1 { font-size: 180%; font-weight: 900; }
 #footer {
 	text-align: center;
 }
+
+.support {
+  text-align: left;
+  background-color: white;
+  color: black;
+  padding: .4em;
+  line-height: 2em;
+}
+#support a {
+  margin-right: 48px;
+}
