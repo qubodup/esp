@@ -2,17 +2,29 @@ body {
 	padding-top: 62px;
 	font-size: 170%;
 }
-.navbar-nav > li > a, .navbar-brand {
+.navbar-nav > li > a {
 	padding-top: 4px !important;
 	padding-bottom: 0 !important;
 	height: 58px;
 }
+.navbar-brand {
+  padding:0;
+}
 .navbar {
-	min-height:58px !important;
+	height:62px !important;
   background-color: white;
 }
 .navbar .list-inline {
 	margin-bottom: 0 !important;
+}
+.navbar-nav, .navbar-nav li, .navbar-nav li a {
+  height: 50px;
+  line-height: 50px;
+}
+
+.navbar-right img {
+  width: 24px;
+  height: 24px;
 }
 
 .red { color: white; background-color: #FF6B8C; }
