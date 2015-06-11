@@ -56,12 +56,11 @@ h1 { font-size: 180%; font-weight: 900; }
 .date div {
 	color: black;
 	background-color: white;
-  padding-bottom: .5em;
 }
 
 .date div p {
-  padding-left: .5em;
-  padding-right: .5em;
+  padding: .2em .5em;
+  margin: 0;
 }
 
 .date h3 {
@@ -69,11 +68,20 @@ h1 { font-size: 180%; font-weight: 900; }
 	background-color: #DD365B;
 	font-size: 120%;
 	padding: 6px;
+  margin-bottom: 0;
 }
 
 .date.past h3 {
   color: white;
 	background-color: #999;
+}
+
+.date div p:nth-child(2n+1) {
+  background-color: #ddd;
+}
+
+.date div p.ppl-mix {
+  background-color: #FFC7D4;
 }
 
 #footer {
