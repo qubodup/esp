@@ -25,7 +25,7 @@ body {
 }
 .red { color: white; background-color: #FF6B8C; }
 .white { color: black; background-color: white; }
-.blue { color: white; background-color: #36C1E5; }
+//.blue { color: white; background-color: #36C1E5; }
 .gray { color: black; background-color: #ccc; }
 h1 { font-size: 180%; font-weight: 900; }
 
