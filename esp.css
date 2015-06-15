@@ -98,3 +98,17 @@ h1 { font-size: 180%; font-weight: 900; }
 #support a {
   margin-right: 48px;
 }
+.gallery img {
+  float: left;
+  height: 100%;
+  width: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+.gallery iframe {
+  min-width: 300px;
+  min-height: 300px;
+  height: 300px;
+  width: 300px;
+}
