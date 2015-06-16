@@ -57,10 +57,20 @@ h1 { font-size: 180%; font-weight: 900; }
   padding: .2em .5em;
   margin: 0;
 }
-
+h2 {
+  color: #00aad4;
+}
+.separator {
+  height: 2px;
+  width: auto;
+  background-color: #00aad4;
+  border-bottom: 1px solid #00aad4;
+  margin-bottom: 1em;
+}
 .date h3 {
   color: white;
-	background-color: #DE383D;
+//	background-color: #DE383D;
+  background-color: #36C1E5;
 	font-size: 120%;
 	padding: 6px;
   margin-bottom: 0;
