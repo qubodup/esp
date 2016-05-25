@@ -1,0 +1,300 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{datetime}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref} 
+\usepackage{upquote}
+\usepackage[scaled=1]{beramono}
+\setlength{\parindent}{0pt}
+
+
+
+\def\shortyear#1{\expandafter\shortyearhelper#1}
+\def\shortyearhelper#1#2#3#4{#3#4}
+\newdateformat{specialdate}{\shortyear{\the\year}.\twodigit{\THEMONTH}.\twodigit{\THEDAY}}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
+\lhead{}
+
+\date{\vspace{-5ex}}
+\chead{}
+\rhead{}
+\lfoot{LÖVE Einführung - \date{\specialdate\today}}
+\cfoot{\thepage/\pageref*{LastPage}}
+\rfoot{\href{http://espws.de}{espws.de}}
+\definecolor{darkgray}{rgb}{0.45, 0.45, 0.45}
+\definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+
+\lstdefinestyle{colorstyle}
+{
+  numbers          = left,
+  language         = {[5.2]Lua},
+  basicstyle       = \ttfamily,
+  showstringspaces = false,
+  commentstyle     = \itshape\color{darkgray},
+  numberstyle      = \tiny,
+  identifierstyle  = \color{blue},
+  keywordstyle     = \color{magenta},
+  stringstyle      = \color{red},
+  xleftmargin      = 0em,
+  rulecolor        = \color{lightgray},
+  frame            = l,
+  framexleftmargin = .2em
+}
+\title{\vspace{-8ex}Einstieg Spiele-Programmierung LÖVE Einführung\vspace{-1ex}}
+
+\author{\copyright{} 2015-2016 Fabian Gerhard, Iwan Gabovitch (\href{http://espws.de}{espws.de})\\
+Lizenziert unter einer \href{http://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike 4.0 International Lizenz}}
+
+\lstset{style=colorstyle}
+
+\exhyphenpenalty=10000\hyphenpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+\clubpenalty=10000
+\sloppy
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy} % footer on 1st page
+
+\section{Vorbereitung}
+
+\begin{enumerate}
+  \item Extrahiere \textbf{StartGamedev} und öffne den Texteditor mithilfe der \texttt{open-editor} Datei.
+  \item Lese Aufgaben aufmerksam, tippe Code (\textit{Quelltext}) ab und teste Ergebnisse.
+  \item Innerhalb einer Aufgabe (z.B. 1.1) wird der Code kontinuierlich erweitert. Wenn Du eine neue Aufgabe (z.B. 1.2) anfängst, solltest Du deinen Texteditor leeren.
+  \item Funktionen (z.B. \texttt{function love.draw() ... end}) dürfen nur ein mal vorkommen.
+  \item Benutze die Tabulatortaste um einzurücken (links neben Q), halte Deinen Code lesbar.
+  \item Funktionen, Schleifen und Konditionen enden mit \texttt{\texttt{end}}. Die Zeilen davor sind der Körper.
+  \item Deine Zeilen können anders durchnummeriert sein, als auf diesem Übungsblatt.
+\end{enumerate}
+
+\section{Malen, wie auf einer Leindwand}
+
+\subsection{Dein Lieblingsrechteck}
+
+Ein Rechteck an der Position \texttt{x=100}, \texttt{y=200}. 300 Pixel breit und 150 hoch.
+\lstinputlisting{code/intro-rectangle.lua}
+
+\begin{enumerate}
+\item Zeichne das Rechteck an einer anderen Stelle.
+\item Male das Rechteck ,,genau'' in der rechten oberen Ecke. Das Fenster hat die Größe 800x600.
+\item Ersetze \texttt{''fill''} mit \texttt{''line''}. Was passiert nun?
+\item Male ein zweites Rechteck woanders. Kopiere nur Zeile 2.
+\item Mache das gesamte Fenster Weiß.
+\end{enumerate}
+
+\subsection{Zwei Rechtecke}
+
+\lstinputlisting{code/intro-2rectangles.lua}
+
+\begin{enumerate} 
+\item Ändere die Zahlen in Zeile 2. Was passiert?
+\item Diese Farben-Repräsentation mit drei Zahlen (0-255) wird RGB (Rot-Grün-Blau) genannt. Färbe das kleinere Rechteck blau.
+\item Bewege die Rechtecke, sodass sie überlappen. Welches ist oben?
+\item Vertausche die Zeilen 3 und 5. Was ändert sich?
+\end{enumerate}
+
+\subsection{Ein Paar Linien}
+
+\lstinputlisting{code/intro-lines.lua}
+
+\begin{enumerate} 
+\item Bewege das Rechteck. Passe die Linien entsprechend an.
+\item Das war anstrengend. Variablen können das automatisch machen! Fahre fort.
+\end{enumerate}
+
+\subsection{Variablen}
+
+\lstinputlisting{code/intro-variables.lua}
+
+\begin{enumerate} 
+\item Was passiert, wenn man die Zahlen für \texttt{x} und \texttt{y} vertauscht?
+\item Ändere Zeile 2 zu \texttt{y = x}. Was bedeutet dies?
+\item Ändere Zeile 2 zurück zu \texttt{y = 200}. Ändere Zeile 1 zu: \texttt{x = y}. Es wird eine Fehlermeldung erscheinen. Kannst Du den Code korrigieren?
+\item Führe eine Variable für die Breite des Rechtecks ein.
+\end{enumerate}
+
+\section{Interaktion}
+
+\subsection{Ein bewegtes Bild}
+
+\lstinputlisting{code/intro-interaction.lua}
+
+\begin{enumerate} 
+\item Versuche, im Spiel den Mausknopf zu drücken. Etwas sollte geschehen.
+\item Lasse das Rechteck sich rückwärts bewegen.
+\item Lasse das Rechteck sich nach oben bewegen.
+\item Vergrößere das Reckteck mit jedem Mausknopfdruck.
+\end{enumerate}
+
+\subsection{Wird richtig/rechts geklickt?}
+
+\lstinputlisting{code/intro-control.lua}
+
+\begin{enumerate} 
+\item Wo muss man klicken, um das Rechteck zu bewegen?
+\item Kopiere Zeile 11 und ändere sie so, dass \texttt{a} verringert wird wenn \texttt{dir == "left"}.
+\item Lasse das Rechteck den Rand berühren, aber nich darüber hinaus gehen (z.B. ergänze \texttt{and a < 500} vor \texttt{then}).
+\end{enumerate}
+
+\subsection{Es soll von selbst etwas tun}
+
+\lstinputlisting{code/intro-update.lua}
+
+Alles innerhalb vom \texttt{love.update}-Block wird 60 mal je Sekunde ausgeführt.
+\newline
+
+\begin{enumerate} 
+\item Halte das Rechteck am oberen Rand an. \texttt{if y > 200 then} ... \texttt{end} o.ä. könnte helfen.
+\item Oben im Code, füge \texttt{velocity = 1} (Geschwindigkeit = 1) ein. Benutze \texttt{y = y - velocity} anstelle von \texttt{y = y - 1} um das Rechteck zu bewegen.
+\item Reduziere \texttt{velocity} dauerhaft um 0.01. Das simuliert Erdanziehung.
+\item Erhöhe \texttt{velocity}, wenn diese angeklickt wird (benutze \texttt{love.mousepressed()}).
+\item Halte das Rechteck am unteren Rand an.
+\item Zeige die Geschwindigkeit mit \texttt{love.graphics.print(velocity,10,10)}
+\item Setze \texttt{velocity} gleich 0, wenn das Rechteck den oberen Rand berührt.
+\item Gebe der Spielerin ein Ziel. Zeige an, wenn die Spielerin das Ziel erreicht hat. Z.B.: Ein einfaches Parken-Spiel. Zeichne eine Linie auf der Höhe 100, ändere die Farbe des Rechteckes, \texttt{if 0.5 > velocity and velocity > -0.5 and 105 > y and y > 95 then}.
+\end{enumerate}
+
+\subsection{Schleifen (Loops)}
+
+Die \textbf{while}-Schleife (während-loop) führt das Programm in dessen Rumpf/Körper aus, so lange die Schleifen-/Laufbedingung \texttt{y < 500} wahr ist.
+
+\lstinputlisting{code/intro-loop.lua}
+
+\begin{enumerate}
+\item Vertausche Zeilen 7 und 8. Verstehst Du den Unterschied?
+\item Verschiebe Zeile 4 in Zeile 2. Der Bildschirm sollte schwarz werden. Wieso?
+\item Mache die Änderungen rückgängig. Dann zeichne mehr aber kleinere Rechtecke vertikal mithilfe der while-Schleife.
+\item Füge eine neue Variable \texttt{z = 0} hinzu. Füge eine neue while-Schleife hinzu. Lasse diese \texttt{z} erhöhen und Rechtecke horizontal zeichnen.
+\item Bewege \texttt{z = 0} und die neue Schleife in den Körper der alten Schleife. Nun wird durch alle z-Werte hindurchgegangen, wenn \texttt{y} erhöht wird! Zeichne so ein Schachbrettmuster.
+\item Bewege das Schachbrett auf Mausklick.
+\end{enumerate}
+
+\subsection{Listen}
+\lstinputlisting{code/intro-array.lua}
+\texttt{a} ist eine Liste (Tabelle). \texttt{a[1]} ist gleich \texttt{100}. \texttt{1} ist hier der \textit{Index} von \texttt{100} in \texttt{a}.
+\newline
+
+\begin{enumerate}
+  \item Füge eine Nummer in die Liste \texttt{a} hinzu. \texttt{\#a} ist die Länge von \texttt{a}. Zeichne alle 4 Elemente.
+\item \texttt{a[5] = 5 * 10} erstellt ein neues Element. Lasse mithilfe einer while-Schleife \texttt{a} gleich \texttt{\{10,20,....,200\}} sein.
+\item \texttt{a[\#a+1] = v} ist das gleiche, wie \texttt{v} zur Liste hinzuzufügen. Wenn die Maus geklickt wird, füge die x-Koordinate des Klicks zur Liste hinzu.
+\end{enumerate}
+
+\iffalse
+\subsection{Functions}
+Functions calculate an output to a given input. They can also output nothing and just execute some code based on the input. They can also ignore their input and just be a fancy name for a block of code.
+love.draw, love.update and love.mousepressed are special functions which are defined by you but executed by the game engine.\footnote{Executing a function is usually called \textit{calling a function}}
+
+\lstinputlisting{code/intro-functions.lua}
+
+\begin{enumerate}
+\item twosquares(50,150) executes the code from lines 2-4 with x being 50 and y being 150. The values \textit{returned} in line 4 are saved in x1,y1. \newline
+      Draw another pair of squares at the position returned by twosquares(x1,y1).
+\item Create a new function called foursquares(x,y). This function should draw 4 squares all having some distance between them. You can use twosquares.
+\item Add this function and call drawatx1y1 in love.draw.\footnote{drawatx1y1() calls the function. drawatx1y1 does not! drawatx1y1 only represents a variable holding the function.}
+\begin{lstlisting}
+function drawatx1y1()
+  love.graphics.rectangle("fill",x1,y1,100,100)
+end
+\end{lstlisting}
+Any code that is executed after line 8 can use x1 and y1, but often you only need a variable inside a block of code.
+Sharing that variable with the rest of the code can make it more difficult to understand the code, because small changes can have widespread, hard to track, effects.
+
+Replace line 8 by \textbf{local x1 , y1 = twosquares (50 ,150)}.
+
+Now drawatx1y1 can not access x1 and y1 anymore. The program should crash.
+
+How are variables transfered from love.draw to twosquares?
+Can you replicate that strategy to make drawatx1y1 work again?
+
+\item Create a function pointInRectangle(x,y,rectanglex,rectangley,width,height) which returns true when x,y is inside the rectangle drawn by love.graphics.rectangle("fill", rectanglex,rectangley,width,height) and false otherwise.
+      Create a moving rectangle with love.update.
+      Signify if the player has clicked the moving rectangle using pointInRectangle.
+\end{enumerate}
+
+\subsection{Object Orientation}
+Objects are some functions and some variables bundled together. They can represent objects of reality like cats and trees.
+The functions could then represent what a cat can do while the variables remember attributes of the cat.
+This could be concievied as an object. cat[1] could be the age and "lisa"\footnote{"lisa" is a string that could be printed. Strings can be hold in variables just like numbers.} 
+\begin{lstlisting}
+cat = {3, "lisa", function() love.graphics.print("purr",50,50) end}
+\end{lstlisting}
+It would be annoying to refer to the name of the cat as cat[2] though.
+Lists can actually be more than lists. They can not only associate an index with a value, but any value with any value.
+For that we need new syntax.
+\begin{lstlisting}
+cat = {3, "lisa", function() love.graphics.print("purr",50,50) end}
+\end{lstlisting}
+is the same as
+\begin{lstlisting}
+cat = {
+  3,
+  "lisa",
+  function() love.graphics.print("purr",50,50) end
+}
+\end{lstlisting}
+is the same as
+\begin{lstlisting}
+cat = {
+  1 = 3,
+  2 = "lisa",
+  3 = function() love.graphics.print("purr",50,50) end
+}
+\end{lstlisting}
+but you can do
+\begin{lstlisting}
+cat = {
+  age = 3,
+  name = "lisa",
+  askforfood = function() love.graphics.print("purr",50,50) end
+}
+\end{lstlisting}
+now cat["age"] is 3 and cat["name"] is lisa.
+Beware that cat["age"] is not the same cat[age]. What cat[age] is, depends on what value the variable age has.
+
+One can create a function to make the creation of complicated objects easier.
+
+\begin{lstlisting}
+function newCat(age, name)
+return {
+    age = age,
+    name = name,
+    askforfood = function() love.graphics.print("purr",50,50) end
+  }
+end
+\end{lstlisting}
+Here's how to give the functions  access the objects variables.\footnote{\textbf{a .. b} appends the string b to a. Instead of cat.askforfood(cat) you can write cat:askforfood(). Its the same.}
+\begin{lstlisting}
+function newCat(age, name)
+  return {
+    age = age,
+    name = name,
+    askforfood = function(thecat)
+      love.graphics.print("purr I'm " .. thecat.name ,50,50)
+    end
+  }
+end
+
+cat = newCat(4,"tom")
+
+function love.draw()
+  cat.askforfood(cat)
+end
+\end{lstlisting}
+
+\lstinputlisting{code/intro-objects.lua}
+
+\fi
+
+\end{document}
