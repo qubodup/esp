@@ -13,6 +13,30 @@ for run in {1..2}; do
   done
 done
 
+# bw pdf
+cp *tex bw/
+cd bw/
+ln -s ../graphics .
+ln -s ../code .
+for run in {1..2}; do
+  for i in *tex; do
+    # pdflatex clean
+    infile=`readlink -f "$i"`
+    inpath=`dirname "$infile"`
+    tmpath="/tmp/pdflatex`echo "$inpath" | sed -e 's/\//-/g'`"
+
+    cp "$i" "/tmp/$i"
+    sed -i 's/= colorstyle/= bwstyle/' "/tmp/$i"
+    sed -i 's/=blue/=black/g' "/tmp/$i" 
+    mkdir "$tmpath"
+    pdflatex -output-directory "$tmpath" "/tmp/$i"
+    mv "$tmpath"/*pdf "$inpath"
+  done
+done
+rm graphics code
+cd ..
+rm bw/*tex
+
 # html
 
 rm -r en/ de/ 

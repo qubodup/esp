@@ -48,12 +48,28 @@
   frame            = l,
   framexleftmargin = .2em
 }
+\lstdefinestyle{bwstyle}
+{
+  numbers          = left,
+  language         = {[5.2]Lua},
+  basicstyle       = \ttfamily,
+  showstringspaces = false,
+  commentstyle     = \itshape\color{darkgray},
+  numberstyle      = \tiny,
+  identifierstyle  = \bfseries,
+  keywordstyle     = \bfseries,
+  xleftmargin      = 0em,
+  rulecolor        = \color{lightgray},
+  frame            = l,
+  framexleftmargin = .2em
+}
+
 \title{\vspace{-8ex}Einstieg Spiele-Programmierung LÖVE Einführung\vspace{-1ex}}
 
-\author{\copyright{} 2015-2016 Fabian Gerhard, Iwan Gabovitch (\href{http://espws.de}{espws.de})\\
+\author{\copyright{} 2015-2017 Fabian Gerhard, Iwan Gabovitch (\href{http://espws.de}{espws.de})\\
 Lizenziert unter einer \href{http://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike 4.0 International Lizenz}}
 
-\lstset{style=colorstyle}
+\lstset{style = colorstyle}
 
 \exhyphenpenalty=10000\hyphenpenalty=10000
 \widowpenalty=10000
